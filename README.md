@@ -1,8 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Meal Planner
+
+This is a simple meal planner application built with [Next.js](https://nextjs.org) and [Tailwind CSS](https://tailwindcss.com/). It uses the [Google Generative AI](https://ai.google/) to generate high-protein meal ideas based on user input.
+
+## Features
+
+-   Enter an ingredient to get meal ideas.
+-   Get three high-protein meal suggestions.
+-   Each suggestion includes a title, ingredients, and preparation instructions.
+-   Dark-themed, responsive UI.
+-   Collapsible sections for each meal idea.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+-   Node.js and npm (or yarn/pnpm/bun)
+-   A Google API key with the Generative AI API enabled.
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone <repository-url>
+    ```
+2.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+### Configuration
+
+This project requires a Google API key to connect to the Gemini API.
+
+1.  **Create a `.env.local` file** in the root directory of the project. This file is used to store local environment variables and is not checked into version control.
+
+2.  **Add your API key** to the `.env.local` file in the following format:
+    ```
+    GOOGLE_API_KEY="YOUR_API_KEY"
+    ```
+    Replace `"YOUR_API_KEY"` with your actual Google API key.
+
+### Running the Development Server
+
+Once you have installed the dependencies and configured your API key, you can run the development server:
 
 ```bash
 npm run dev
@@ -16,18 +56,16 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this project, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+-   [React Documentation](https://react.dev/) - learn about React.
+-   [Tailwind CSS Documentation](https://tailwindcss.com/docs) - learn about Tailwind CSS.
+-   [Google AI for Developers](https://ai.google.dev/) - learn about the Google Generative AI API.
 
 ## Deploy on Vercel
 
