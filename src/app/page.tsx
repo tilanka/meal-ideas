@@ -4,9 +4,13 @@ import { useActionState, useState } from "react";
 import { getSuggestions, MealIdea } from "./actions";
 
 export default function Home() {
-  const [state, formAction, isPending] = useActionState<{ suggestions: MealIdea[] }>(
+  const initialState: { suggestions: MealIdea[] } = {
+    suggestions: [],
+  };
+
+  const [state, formAction, isPending] = useActionState(
     getSuggestions,
-    { suggestions: [] }
+    initialState
   );
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -56,7 +60,7 @@ export default function Home() {
 
         {state.suggestions.length > 0 && (
           <div className="mt-12">
-            <h2 className="text-xl font-semibold text-center text-gray-100 mb-6">
+            <h2 className="text-2xl font-semibold text-center text-gray-100 mb-6">
               Suggestions
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4">
