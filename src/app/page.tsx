@@ -34,7 +34,7 @@ export default function Home() {
               id="meal-input"
               name="input"
               type="text"
-              placeholder="e.g. beef, something spicy with chicken, eggs"
+              placeholder="e.g. something spicy with chicken"
               className="p-3 bg-gray-800 border border-gray-700 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition placeholder-gray-500"
               required
             />
