@@ -85,7 +85,7 @@ function SearchContent() {
     <>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
         <div className="flex flex-col gap-4">
-          <label htmlFor="meal-input" className="text-lg font-medium text-gray-300">
+          <label htmlFor="meal-input" className="text-lg font-medium">
             What do you want to eat?
           </label>
           <input
@@ -94,7 +94,7 @@ function SearchContent() {
             type="text"
             defaultValue={searchParams.get("q")?.toString()}
             placeholder="e.g. something spicy with chicken"
-            className="p-3 bg-gray-800 border border-gray-700 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition placeholder-gray-500"
+            className="p-3 border border-gray-700 rounded-md shadow-sm focus:ring-2 focus:border-transparent transition"
             required
           />
           <Button 
@@ -104,7 +104,7 @@ function SearchContent() {
             disabled={isPending}>
             {isPending ? (
               <>
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -129,10 +129,10 @@ function SearchContent() {
             {suggestions.map((idea, index) => (
               <div
                 key={index}
-                className="bg-gray-800 rounded-lg shadow-md border border-gray-700 overflow-hidden"
+                className="rounded-lg shadow-md border border-gray-700 overflow-hidden"
               >
                 <h3
-                  className="text-lg font-bold text-blue-400 p-4 cursor-pointer flex justify-between items-start"
+                  className="text-lg font-bold p-4 cursor-pointer flex justify-between items-start"
                   onClick={() => toggleSuggestion(index)}
                 >
                   {idea.title}
@@ -142,16 +142,16 @@ function SearchContent() {
                   <div className="p-6 pt-0">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="text-md font-semibold text-gray-200 mb-2">Ingredients</h4>
-                        <ul className="list-disc list-inside text-gray-300">
+                        <h4 className="text-md font-semibold mb-2">Ingredients</h4>
+                        <ul className="list-disc list-inside">
                           {idea.ingredients.map((ingredient, i) => (
                             <li key={i}>{ingredient}</li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <h4 className="text-md font-semibold text-gray-200 mb-2">Instructions</h4>
-                        <ol className="list-decimal list-inside text-gray-300">
+                        <h4 className="text-md font-semibold mb-2">Instructions</h4>
+                        <ol className="list-decimal list-inside">
                           {idea.instructions.map((step, i) => (
                             <li key={i}>{step}</li>
                           ))}
@@ -195,13 +195,13 @@ function SearchContent() {
 
 export default function Home() {
   return (
-    <div className="font-sans min-h-screen bg-gray-900 text-white">
+    <div className="font-sans min-h-screen">
       <main className="container mx-auto p-6">
         <PageHeader title="Meal ideas">
-          <Link href="/shopping-list" className="text-blue-400 hover:text-blue-300 transition-colors">
+          <Link href="/shopping-list" className="transition-colors">
             Shopping List
           </Link>
-          <Link href="/saved" className="text-blue-400 hover:text-blue-300 transition-colors">
+          <Link href="/saved" className="transition-colors">
             Saved Meals
           </Link>
         </PageHeader>

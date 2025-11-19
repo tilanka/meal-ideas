@@ -31,21 +31,21 @@ export default function SavedMeals() {
     };
 
     return (
-        <div className="font-sans min-h-screen bg-gray-900 text-white">
+        <div className="font-sans min-h-screen">
             <main className="container mx-auto p-6">
                 <PageHeader title="Saved Meals">
-                    <Link href="/shopping-list" className="text-blue-400 hover:text-blue-300 transition-colors">
+                    <Link href="/shopping-list" className="transition-colors">
                         Shopping List
                     </Link>
-                    <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors">
+                    <Link href="/" className="transition-colors">
                         Generator
                     </Link>
                 </PageHeader>
 
                 {savedMeals.length === 0 ? (
-                    <div className="text-center text-gray-400 mt-20">
+                    <div className="text-center mt-20">
                         <p className="text-xl">No saved meals yet.</p>
-                        <Link href="/" className="text-blue-400 hover:text-blue-300 mt-4 inline-block">
+                        <Link href="/" className="mt-4 inline-block">
                             Generate some ideas
                         </Link>
                     </div>
@@ -54,10 +54,10 @@ export default function SavedMeals() {
                         {savedMeals.map((idea, index) => (
                             <div
                                 key={index}
-                                className="bg-gray-800 rounded-lg shadow-md border border-gray-700 overflow-hidden"
+                                className="rounded-lg shadow-md border border-gray-700 overflow-hidden"
                             >
                                 <h3
-                                    className="text-lg font-bold text-blue-400 p-4 cursor-pointer flex justify-between items-start"
+                                    className="text-lg font-bold p-4 cursor-pointer flex justify-between items-start"
                                     onClick={() => toggleSuggestion(index)}
                                 >
                                     {idea.title}
@@ -67,16 +67,16 @@ export default function SavedMeals() {
                                     <div className="p-6 pt-0">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
-                                                <h4 className="text-md font-semibold text-gray-200 mb-2">Ingredients</h4>
-                                                <ul className="list-disc list-inside text-gray-300">
+                                                <h4 className="text-md font-semibold mb-2">Ingredients</h4>
+                                                <ul className="list-disc list-inside">
                                                     {idea.ingredients.map((ingredient, i) => (
                                                         <li key={i}>{ingredient}</li>
                                                     ))}
                                                 </ul>
                                             </div>
                                             <div>
-                                                <h4 className="text-md font-semibold text-gray-200 mb-2">Instructions</h4>
-                                                <ol className="list-decimal list-inside text-gray-300">
+                                                <h4 className="text-md font-semibold mb-2">Instructions</h4>
+                                                <ol className="list-decimal list-inside">
                                                     {idea.instructions.map((step, i) => (
                                                         <li key={i}>{step}</li>
                                                     ))}
@@ -103,7 +103,7 @@ export default function SavedMeals() {
                                                     <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
                                                     <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
                                                 </svg>
-                                                Remove
+                                                <span className="sr-only">Remove</span>
                                             </button>
                                         </div>
                                     </div>
