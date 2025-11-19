@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MealIdea } from "../actions";
+import { PageHeader } from "../../components/PageHeader";
 
 export default function SavedMeals() {
     const [savedMeals, setSavedMeals] = useState<MealIdea[]>([]);
@@ -31,20 +32,15 @@ export default function SavedMeals() {
 
     return (
         <div className="font-sans min-h-screen bg-gray-900 text-white">
-            <main className="container mx-auto p-8">
-                <div className="flex justify-between items-center mb-10">
-                    <h1 className="text-4xl font-bold text-gray-100">
-                        Saved Meals
-                    </h1>
-                    <div className="flex gap-4">
-                        <Link href="/shopping-list" className="text-blue-400 hover:text-blue-300 transition-colors">
-                            Shopping List
-                        </Link>
-                        <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors">
-                            ← Back to Generator
-                        </Link>
-                    </div>
-                </div>
+            <main className="container mx-auto p-6">
+                <PageHeader title="Saved Meals">
+                    <Link href="/shopping-list" className="text-blue-400 hover:text-blue-300 transition-colors">
+                        Shopping List
+                    </Link>
+                    <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors">
+                        Generator
+                    </Link>
+                </PageHeader>
 
                 {savedMeals.length === 0 ? (
                     <div className="text-center text-gray-400 mt-20">

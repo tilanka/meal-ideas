@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { searchMeals, MealIdea } from "./actions";
+import { PageHeader } from "../components/PageHeader";
 
 function SearchContent() {
   const [suggestions, setSuggestions] = useState<MealIdea[]>([]);
@@ -178,20 +179,15 @@ function SearchContent() {
 export default function Home() {
   return (
     <div className="font-sans min-h-screen bg-gray-900 text-white">
-      <main className="container mx-auto p-8">
-        <div className="flex justify-between items-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-100">
-            Meal ideas
-          </h1>
-          <div className="flex gap-4">
-            <Link href="/shopping-list" className="text-blue-400 hover:text-blue-300 transition-colors">
-              Shopping List
-            </Link>
-            <Link href="/saved" className="text-blue-400 hover:text-blue-300 transition-colors">
-              Saved Meals
-            </Link>
-          </div>
-        </div>
+      <main className="container mx-auto p-6">
+        <PageHeader title="Meal ideas">
+          <Link href="/shopping-list" className="text-blue-400 hover:text-blue-300 transition-colors">
+            Shopping List
+          </Link>
+          <Link href="/saved" className="text-blue-400 hover:text-blue-300 transition-colors">
+            Saved Meals
+          </Link>
+        </PageHeader>
         <Suspense fallback={<div>Loading...</div>}>
           <SearchContent />
         </Suspense>

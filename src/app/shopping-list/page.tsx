@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MealIdea } from "../actions";
+import { PageHeader } from "../../components/PageHeader";
 
 export default function ShoppingList() {
     const [ingredients, setIngredients] = useState<string[]>([]);
@@ -37,20 +38,15 @@ export default function ShoppingList() {
 
     return (
         <div className="font-sans min-h-screen bg-gray-900 text-white">
-            <main className="container mx-auto p-8">
-                <div className="flex justify-between items-center mb-10">
-                    <h1 className="text-4xl font-bold text-gray-100">
-                        Shopping List
-                    </h1>
-                    <div className="flex gap-4">
-                        <Link href="/saved" className="text-blue-400 hover:text-blue-300 transition-colors">
-                            Saved Meals
-                        </Link>
-                        <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors">
-                            Generator
-                        </Link>
-                    </div>
-                </div>
+            <main className="container mx-auto p-6">
+                <PageHeader title="Shopping List">
+                    <Link href="/saved" className="text-blue-400 hover:text-blue-300 transition-colors">
+                        Saved Meals
+                    </Link>
+                    <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors">
+                        Generator
+                    </Link>
+                </PageHeader>
 
                 {ingredients.length === 0 ? (
                     <div className="text-center text-gray-400 mt-20">
