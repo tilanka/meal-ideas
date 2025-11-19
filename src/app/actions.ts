@@ -14,7 +14,7 @@ export interface MealIdea {
   instructions: string[];
 }
 
-async function getMealIdeas(input: string): Promise<MealIdea[]> {
+export async function searchMeals(input: string): Promise<MealIdea[]> {
   console.log("Generating meal ideas for input:", input);
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
   const prompt = `
@@ -49,6 +49,6 @@ export async function getSuggestions(
   if (!input) {
     return { suggestions: [] };
   }
-  const suggestions = await getMealIdeas(input);
+  const suggestions = await searchMeals(input);
   return { suggestions };
 }
