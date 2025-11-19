@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MealIdea } from "../actions";
 import { PageHeader } from "../../components/PageHeader";
+import { AccordionHeader } from "../../components/AccordionHeader";
 
 export default function SavedMeals() {
     const [savedMeals, setSavedMeals] = useState<MealIdea[]>([]);
@@ -50,13 +51,11 @@ export default function SavedMeals() {
                                 key={index}
                                 className="rounded-lg shadow-md border border-gray-700 overflow-hidden"
                             >
-                                <h3
-                                    className="text-lg font-bold p-4 cursor-pointer flex justify-between items-start"
+                                <AccordionHeader
+                                    title={idea.title}
+                                    isOpen={openIndex === index}
                                     onClick={() => toggleSuggestion(index)}
-                                >
-                                    {idea.title}
-                                    <span>{openIndex === index ? '−' : '+'}</span>
-                                </h3>
+                                />
                                 {openIndex === index && (
                                     <div className="p-6 pt-0">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -54,7 +54,7 @@ export default function ShoppingList() {
                         <div className="space-y-6">
                             {meals.map((meal) => (
                                 <div key={meal.title}>
-                                    <h3 className="text-lg font-semibold mb-2">{meal.title}</h3>
+                                    <h3 className="text-md font-semibold mb-2">{meal.title}</h3>
                                     <ul className="space-y-3">
                                         {meal.ingredients.map((item, index) => (
                                             <li
