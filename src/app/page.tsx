@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useState, useEffect } from "react";
+import Link from "next/link";
 import { getSuggestions, MealIdea } from "./actions";
 
 export default function Home() {
@@ -18,12 +19,51 @@ export default function Home() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const [bookmarkedMeals, setBookmarkedMeals] = useState<MealIdea[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("savedMeals");
+    if (saved) {
+      try {
+        setBookmarkedMeals(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse saved meals", e);
+      }
+    }
+  }, []);
+
+  const toggleBookmark = (idea: MealIdea) => {
+    setBookmarkedMeals((prev) => {
+      const isAlreadyBookmarked = prev.some((m) => m.title === idea.title);
+      let newBookmarks;
+      if (isAlreadyBookmarked) {
+        newBookmarks = prev.filter((m) => m.title !== idea.title);
+      } else {
+        newBookmarks = [...prev, idea];
+      }
+      localStorage.setItem("savedMeals", JSON.stringify(newBookmarks));
+      return newBookmarks;
+    });
+  };
+
+  const isBookmarked = (idea: MealIdea) => bookmarkedMeals.some((m) => m.title === idea.title);
+
   return (
     <div className="font-sans min-h-screen bg-gray-900 text-white">
       <main className="container mx-auto p-8">
-        <h1 className="text-4xl font-bold text-center text-gray-100 mb-10">
-          Meal ideas
-        </h1>
+        <div className="flex justify-between items-center mb-10">
+          <h1 className="text-4xl font-bold text-gray-100">
+            Meal ideas
+          </h1>
+          <div className="flex gap-4">
+            <Link href="/shopping-list" className="text-blue-400 hover:text-blue-300 transition-colors">
+              Shopping List
+            </Link>
+            <Link href="/saved" className="text-blue-400 hover:text-blue-300 transition-colors">
+              Saved Meals →
+            </Link>
+          </div>
+        </div>
 
         <form action={formAction} className="max-w-lg mx-auto">
           <div className="flex flex-col gap-4">
@@ -95,6 +135,30 @@ export default function Home() {
                             ))}
                           </ol>
                         </div>
+                      </div>
+                      <div className="mt-6 flex justify-end">
+                        <button
+                          onClick={() => toggleBookmark(idea)}
+                          className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${isBookmarked(idea)
+                            ? "bg-green-500/10 text-green-500 hover:bg-green-500/20"
+                            : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            }`}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill={isBookmarked(idea) ? "currentColor" : "none"}
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+                          </svg>
+                          {isBookmarked(idea) ? "Saved" : "Bookmark"}
+                        </button>
                       </div>
                     </div>
                   )}
