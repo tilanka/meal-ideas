@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface PageHeaderProps {
@@ -7,9 +8,20 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, children }: PageHeaderProps) {
     return (
-        <div className="flex justify-between items-center mb-10">
-            <h1 className="text-3xl font-bold text-gray-100">{title}</h1>
-            <div className="flex gap-4">{children}</div>
+        <div className="flex justify-end items-center mb-10">
+            <h1 className="text-3xl font-bold text-gray-100 sr-only">{title}</h1>
+            <div className="flex gap-4">
+                 <Link href="/">
+                    Meal ideas
+                </Link>
+                <Link href="/shopping-list">
+                    Shopping List
+                </Link>
+                <Link href="/saved">
+                    Saved Meals
+                </Link>
+                {/* {children} */}
+            </div>
         </div>
     );
 }
