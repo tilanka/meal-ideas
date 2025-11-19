@@ -18,7 +18,8 @@ export async function searchMeals(input: string): Promise<MealIdea[]> {
   console.log("Generating meal ideas for input:", input);
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
   const prompt = `
-    Give me three high-protein meal ideas based on the following input: ${input}.
+    Give me five high-protein meal ideas based on the following input: ${input}.
+    Ensure all units are metric and the ingredients and terminology are localised to Australia.
     Return the ideas as a JSON array, where each object has the following structure:
     {
       "title": "Meal Title",
