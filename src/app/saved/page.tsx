@@ -50,7 +50,7 @@ export default function SavedMeals() {
                     <div className="text-center text-gray-400 mt-20">
                         <p className="text-xl">No saved meals yet.</p>
                         <Link href="/" className="text-blue-400 hover:text-blue-300 mt-4 inline-block">
-                            Go generate some ideas!
+                            Generate some ideas
                         </Link>
                     </div>
                 ) : (

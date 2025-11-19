@@ -188,7 +188,7 @@ export default function Home() {
               Shopping List
             </Link>
             <Link href="/saved" className="text-blue-400 hover:text-blue-300 transition-colors">
-              Saved Meals →
+              Saved Meals
             </Link>
           </div>
         </div>

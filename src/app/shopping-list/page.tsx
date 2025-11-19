@@ -57,7 +57,7 @@ export default function ShoppingList() {
                         <p className="text-xl">Your shopping list is empty.</p>
                         <p className="mt-2">Save some meals to see ingredients here!</p>
                         <Link href="/" className="text-blue-400 hover:text-blue-300 mt-4 inline-block">
-                            Go generate ideas
+                            Generate some ideas
                         </Link>
                     </div>
                 ) : (
@@ -67,14 +67,14 @@ export default function ShoppingList() {
                                 <li
                                     key={index}
                                     className={`flex items-center p-3 rounded-md transition-colors cursor-pointer ${checkedItems.has(item)
-                                            ? "bg-gray-700/50 text-gray-500 line-through"
-                                            : "bg-gray-700 hover:bg-gray-600 text-gray-200"
+                                        ? "bg-gray-700/50 text-gray-500 line-through"
+                                        : "bg-gray-700 hover:bg-gray-600 text-gray-200"
                                         }`}
                                     onClick={() => toggleItem(item)}
                                 >
                                     <div className={`w-5 h-5 rounded border mr-4 flex items-center justify-center transition-colors ${checkedItems.has(item)
-                                            ? "bg-blue-600 border-blue-600"
-                                            : "border-gray-500"
+                                        ? "bg-blue-600 border-blue-600"
+                                        : "border-gray-500"
                                         }`}>
                                         {checkedItems.has(item) && (
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-white" viewBox="0 0 20 20" fill="currentColor">
