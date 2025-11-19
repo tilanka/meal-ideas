@@ -38,7 +38,7 @@ export async function searchMeals(input: string): Promise<MealIdea[]> {
     return JSON.parse(cleanedText);
   } catch (error) {
     console.error("Error calling Gemini API or parsing JSON:", error);
-    return [];
+    throw new Error("Failed to generate meal ideas. Please try again later.");
   }
 }
 

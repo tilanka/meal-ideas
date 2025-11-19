@@ -9,6 +9,7 @@ import { PageHeader } from "../components/PageHeader";
 function SearchContent() {
   const [suggestions, setSuggestions] = useState<MealIdea[]>([]);
   const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const searchParams = useSearchParams();
@@ -19,10 +20,19 @@ function SearchContent() {
     const query = searchParams.get("q");
     if (query) {
       setIsPending(true);
-      searchMeals(query).then((results) => {
-        setSuggestions(results);
-        setIsPending(false);
-      });
+      setError(null);
+      searchMeals(query)
+        .then((results) => {
+          setSuggestions(results);
+        })
+        .catch(() => {
+          setError(
+            "The service is currently unavailable. Please try again later."
+          );
+        })
+        .finally(() => {
+          setIsPending(false);
+        });
     }
   }, [searchParams]);
 
@@ -106,6 +116,12 @@ function SearchContent() {
         </div>
       </form>
 
+      {error && (
+        <div className="mt-4 text-red-500 bg-red-500/10 p-4 rounded-md">
+          {error}
+        </div>
+      )}
+
       {suggestions.length > 0 && (
         <div className="mt-4">
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4">
@@ -162,7 +178,7 @@ function SearchContent() {
                         >
                           <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
                         </svg>
-                        {isBookmarked(idea) ? "Saved" : "Bookmark"}
+                        <span className="sr-only">{isBookmarked(idea) ? "Saved" : "Bookmark"}</span>
                       </button>
                     </div>
                   </div>
