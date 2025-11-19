@@ -198,10 +198,10 @@ export default function Home() {
     <div className="font-sans min-h-screen">
       <main className="container mx-auto p-6">
         <PageHeader title="Meal ideas">
-          <Link href="/shopping-list" className="transition-colors">
+          <Link href="/shopping-list">
             Shopping List
           </Link>
-          <Link href="/saved" className="transition-colors">
+          <Link href="/saved">
             Saved Meals
           </Link>
         </PageHeader>

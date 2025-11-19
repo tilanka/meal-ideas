@@ -40,10 +40,10 @@ export default function ShoppingList() {
         <div className="font-sans min-h-screen bg-gray-900 text-white">
             <main className="container mx-auto p-6">
                 <PageHeader title="Shopping List">
-                    <Link href="/saved" className="text-blue-400 hover:text-blue-300 transition-colors">
+                    <Link href="/saved">
                         Saved Meals
                     </Link>
-                    <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors">
+                    <Link href="/">
                         Generator
                     </Link>
                 </PageHeader>

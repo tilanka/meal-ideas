@@ -34,10 +34,10 @@ export default function SavedMeals() {
         <div className="font-sans min-h-screen">
             <main className="container mx-auto p-6">
                 <PageHeader title="Saved Meals">
-                    <Link href="/shopping-list" className="transition-colors">
+                    <Link href="/shopping-list">
                         Shopping List
                     </Link>
-                    <Link href="/" className="transition-colors">
+                    <Link href="/">
                         Generator
                     </Link>
                 </PageHeader>
