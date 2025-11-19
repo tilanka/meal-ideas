@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { searchMeals, MealIdea } from "./actions";
 import { PageHeader } from "../components/PageHeader";
@@ -96,11 +97,11 @@ function SearchContent() {
             className="p-3 bg-gray-800 border border-gray-700 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition placeholder-gray-500"
             required
           />
-          <button
-            type="submit"
-            disabled={isPending}
-            className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-md hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors shadow flex items-center justify-center"
-          >
+          <Button 
+            // className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-md hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors shadow flex items-center justify-center"
+            size="lg" 
+            type="submit" 
+            disabled={isPending}>
             {isPending ? (
               <>
                 <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -112,7 +113,7 @@ function SearchContent() {
             ) : (
               "Get ideas"
             )}
-          </button>
+          </Button>
         </div>
       </form>
 
