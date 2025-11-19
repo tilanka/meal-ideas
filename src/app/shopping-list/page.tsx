@@ -60,8 +60,8 @@ export default function ShoppingList() {
                                             <li
                                                 key={index}
                                                 className={`flex items-center p-3 rounded-md transition-colors cursor-pointer ${checkedItems.has(item)
-                                                    ? "bg-gray-700/50 text-gray-500 line-through"
-                                                    : "bg-gray-700 hover:bg-gray-600 text-gray-200"
+                                                    ? "line-through"
+                                                    : "hover:bg-gray-600"
                                                     }`}
                                                 onClick={() => toggleItem(item)}
                                             >
