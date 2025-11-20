@@ -59,7 +59,7 @@ export default function ShoppingList() {
                                         {meal.ingredients.map((item, index) => (
                                             <li
                                                 key={index}
-                                                className={`flex items-center p-3 rounded-md transition-colors cursor-pointer ${checkedItems.has(item)
+                                                className={`flex items-center rounded-md transition-colors cursor-pointer p-1 ${checkedItems.has(item)
                                                     ? "line-through"
                                                     : "hover:bg-gray-600"
                                                     }`}

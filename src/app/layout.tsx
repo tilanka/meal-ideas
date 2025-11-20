@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Open_Sans, Geist_Mono } from "next/font/google";
+import { Open_Sans, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const fontSans = Open_Sans({
+const fontSans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
 });

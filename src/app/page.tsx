@@ -99,7 +99,6 @@ function SearchContent() {
                         required
                     />
                     <Button
-                        // className="bg-blue-600 text-white font-semibold py-3 px-6 rounded-md hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors shadow flex items-center justify-center"
                         size="lg"
                         type="submit"
                         disabled={isPending}>
