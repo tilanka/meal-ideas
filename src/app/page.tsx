@@ -20,7 +20,7 @@ function SearchContent() {
 
     useEffect(() => {
         const query = searchParams.get("q");
-        if (query) {
+        if (query !== null) {
             setIsPending(true);
             setError(null);
             searchMeals(query)
@@ -75,11 +75,10 @@ function SearchContent() {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const input = formData.get("input") as string;
-        if (input) {
-            const params = new URLSearchParams(searchParams);
-            params.set("q", input);
-            router.push(`${pathname}?${params.toString()}`);
-        }
+        // Allow empty input to pass through
+        const params = new URLSearchParams(searchParams);
+        params.set("q", input);
+        router.push(`${pathname}?${params.toString()}`);
     };
 
     return (
@@ -94,9 +93,7 @@ function SearchContent() {
                         name="input"
                         type="text"
                         defaultValue={searchParams.get("q")?.toString()}
-                        placeholder="e.g. something spicy with chicken"
                         className="p-3 border border-gray-700 rounded-md shadow-sm focus:ring-2 focus:border-transparent transition"
-                        required
                     />
                     <Button
                         size="lg"
