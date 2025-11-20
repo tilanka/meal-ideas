@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MealIdea } from "../actions";
 import { PageHeader } from "../../components/PageHeader";
 import { AccordionHeader } from "../../components/AccordionHeader";
+import { CaloriesDisplay } from "@/components/CaloriesDisplay";
 
 export default function SavedMeals() {
     const [savedMeals, setSavedMeals] = useState<MealIdea[]>([]);
@@ -60,6 +61,9 @@ export default function SavedMeals() {
                                     <div className="p-6 pt-0">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
+                                                {idea.totalCalories && (
+                                                    <CaloriesDisplay calories={idea.totalCalories} />
+                                                )}
                                                 <h4 className="text-md font-semibold mb-2">Ingredients</h4>
                                                 <ul className="list-disc list-inside">
                                                     {idea.ingredients.map((ingredient, i) => (
@@ -100,12 +104,13 @@ export default function SavedMeals() {
                                             </button>
                                         </div>
                                     </div>
-                                )}
-                            </div>
+                                )
+                                }
+                            </div >
                         ))}
-                    </div>
+                    </div >
                 )}
-            </main>
-        </div>
+            </main >
+        </div >
     );
 }

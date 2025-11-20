@@ -7,6 +7,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { searchMeals, MealIdea } from "./actions";
 import { PageHeader } from "../components/PageHeader";
 import { AccordionHeader } from "../components/AccordionHeader";
+import { CaloriesDisplay } from "@/components/CaloriesDisplay";
 
 function SearchContent() {
     const [suggestions, setSuggestions] = useState<MealIdea[]>([]);
@@ -137,6 +138,7 @@ function SearchContent() {
                                     <div className="p-6 pt-0">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
+                                                <CaloriesDisplay calories={idea.totalCalories} />
                                                 <h4 className="text-md font-semibold mb-2">Ingredients</h4>
                                                 <ul className="list-disc list-inside">
                                                     {idea.ingredients.map((ingredient, i) => (

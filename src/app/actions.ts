@@ -12,6 +12,7 @@ export interface MealIdea {
   title: string;
   ingredients: string[];
   instructions: string[];
+  totalCalories?: string;
 }
 
 export async function searchMeals(input: string): Promise<MealIdea[]> {
@@ -20,17 +21,18 @@ export async function searchMeals(input: string): Promise<MealIdea[]> {
 
   let promptText = input;
   if (!input || input.trim() === "") {
-    promptText = "five popular high-protein meal ideas";
+    promptText = "popular high-protein meal ideas";
   }
 
   const prompt = `
-    Give me ${promptText}.
+    Give me five ${promptText}.
     Ensure all units are metric and the ingredients and terminology are localised to Australia.
     Return the ideas as a JSON array, where each object has the following structure:
     {
       "title": "Meal Title",
       "ingredients": ["Ingredient 1", "Ingredient 2"],
-      "instructions": ["Step 1", "Step 2"]
+      "instructions": ["Step 1", "Step 2"],
+      "totalCalories": "Total calories"
     }
   `;
 
