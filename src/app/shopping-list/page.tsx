@@ -14,6 +14,7 @@ export default function ShoppingList() {
         if (saved) {
             try {
                 const savedMeals: MealIdea[] = JSON.parse(saved);
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 setMeals(savedMeals);
             } catch (e) {
                 console.error("Failed to parse saved meals", e);

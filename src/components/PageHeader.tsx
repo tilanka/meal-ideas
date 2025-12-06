@@ -3,10 +3,9 @@ import React from "react";
 
 interface PageHeaderProps {
     title: string;
-    children?: React.ReactNode;
 }
 
-export function PageHeader({ title, children }: PageHeaderProps) {
+export function PageHeader({ title }: PageHeaderProps) {
     return (
         <div className="flex justify-end items-center mb-10">
             <h1 className="text-2xl font-bold text-gray-100 sr-only">{title}</h1>

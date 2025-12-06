@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { searchMeals, MealIdea } from "./actions";
@@ -22,6 +21,7 @@ function SearchContent() {
     useEffect(() => {
         const query = searchParams.get("q");
         if (query !== null) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsPending(true);
             setError(null);
             searchMeals(query)
@@ -49,7 +49,9 @@ function SearchContent() {
         const saved = localStorage.getItem("savedMeals");
         if (saved) {
             try {
-                setBookmarkedMeals(JSON.parse(saved));
+                const parsed = JSON.parse(saved);
+                // eslint-disable-next-line react-hooks/set-state-in-effect
+                setBookmarkedMeals(parsed);
             } catch (e) {
                 console.error("Failed to parse saved meals", e);
             }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Inter, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const fontSans = Inter({
