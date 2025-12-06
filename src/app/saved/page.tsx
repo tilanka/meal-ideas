@@ -15,7 +15,9 @@ export default function SavedMeals() {
         const saved = localStorage.getItem("savedMeals");
         if (saved) {
             try {
-                setSavedMeals(JSON.parse(saved));
+                const parsed = JSON.parse(saved);
+                // eslint-disable-next-line react-hooks/set-state-in-effect
+                setSavedMeals(parsed);
             } catch (e) {
                 console.error("Failed to parse saved meals", e);
             }
