@@ -61,7 +61,7 @@ export default function ShoppingList() {
                                                 key={index}
                                                 className={`flex items-center rounded-md transition-colors cursor-pointer p-1 ${checkedItems.has(item)
                                                     ? "line-through"
-                                                    : "hover:bg-gray-600"
+                                                    : "hover:bg-gray-800"
                                                     }`}
                                                 onClick={() => toggleItem(item)}
                                             >

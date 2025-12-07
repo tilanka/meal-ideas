@@ -95,7 +95,7 @@ function SearchContent() {
                         name="input"
                         type="text"
                         defaultValue={searchParams.get("q")?.toString()}
-                        className="p-3 border border-gray-700 rounded-md shadow-sm focus:ring-2 focus:border-transparent transition"
+                        className="p-3 border border-gray-700 rounded-sm focus:ring-2 focus:border-transparent transition"
                     />
                     <Button
                         size="lg"
