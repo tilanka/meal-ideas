@@ -6,6 +6,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { searchMeals, MealIdea } from "./actions";
 import { PageHeader } from "../components/PageHeader";
 import { AccordionHeader } from "../components/AccordionHeader";
+import { AccordionContainer } from "@/components/AccordionContainer";
 import { CaloriesDisplay } from "@/components/CaloriesDisplay";
 
 function SearchContent() {
@@ -96,7 +97,7 @@ function SearchContent() {
                         name="input"
                         type="text"
                         defaultValue={searchParams.get("q")?.toString()}
-                        className="p-3 border border-gray-700 rounded-md shadow-sm focus:ring-2 focus:border-transparent transition"
+                        className="p-3 border border-gray-700 rounded-sm focus:ring-2 focus:border-transparent transition"
                     />
                     <Button
                         size="lg"
@@ -127,10 +128,7 @@ function SearchContent() {
                 <div className="mt-4">
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4">
                         {suggestions.map((idea, index) => (
-                            <div
-                                key={index}
-                                className="rounded-lg shadow-md border border-gray-700 overflow-hidden"
-                            >
+                            <AccordionContainer key={index}>
                                 <AccordionHeader
                                     title={idea.title}
                                     isOpen={openIndex === index}
@@ -183,7 +181,7 @@ function SearchContent() {
                                         </div>
                                     </div>
                                 )}
-                            </div>
+                            </AccordionContainer>
                         ))}
                     </div>
                 </div>

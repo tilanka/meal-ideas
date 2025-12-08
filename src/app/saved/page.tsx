@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MealIdea } from "../actions";
 import { PageHeader } from "../../components/PageHeader";
 import { AccordionHeader } from "../../components/AccordionHeader";
+import { AccordionContainer } from "@/components/AccordionContainer";
 import { CaloriesDisplay } from "@/components/CaloriesDisplay";
 
 export default function SavedMeals() {
@@ -50,10 +51,7 @@ export default function SavedMeals() {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 max-w-4xl mx-auto">
                         {savedMeals.map((idea, index) => (
-                            <div
-                                key={index}
-                                className="rounded-lg shadow-md border border-gray-700 overflow-hidden"
-                            >
+                            <AccordionContainer key={index}>
                                 <AccordionHeader
                                     title={idea.title}
                                     isOpen={openIndex === index}
@@ -108,7 +106,7 @@ export default function SavedMeals() {
                                     </div>
                                 )
                                 }
-                            </div >
+                            </AccordionContainer >
                         ))}
                     </div >
                 )}

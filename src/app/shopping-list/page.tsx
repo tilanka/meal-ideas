@@ -51,7 +51,7 @@ export default function ShoppingList() {
                         </Link>
                     </div>
                 ) : (
-                    <div className="max-w-2xl mx-auto rounded-lg shadow-md border p-6">
+                    <div className="max-w-2xl mx-auto shadow-md p-6">
                         <div className="space-y-6">
                             {meals.map((meal) => (
                                 <div key={meal.title}>
@@ -62,7 +62,7 @@ export default function ShoppingList() {
                                                 key={index}
                                                 className={`flex items-center rounded-md transition-colors cursor-pointer p-1 ${checkedItems.has(item)
                                                     ? "line-through"
-                                                    : "hover:bg-gray-600"
+                                                    : "hover:bg-gray-800"
                                                     }`}
                                                 onClick={() => toggleItem(item)}
                                             >
