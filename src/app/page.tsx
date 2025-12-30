@@ -55,7 +55,7 @@ function SearchContent() {
     const showCentered = !hasSearched && suggestions.length === 0;
 
     return (
-        <div className={`flex flex-col transition-all duration-500 ease-out ${showCentered ? "min-h-[calc(100vh-10rem)] justify-center" : "min-h-0 justify-start"
+        <div className={`flex flex-col transition-all duration-500 ease-out ${showCentered ? "min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-6rem)] justify-center" : "min-h-0 justify-start"
             }`}>
             <form onSubmit={handleSubmit} className="max-w-lg w-full mx-auto transition-all duration-500 ease-out">
                 <div className="flex flex-col gap-4">
