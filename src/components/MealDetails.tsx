@@ -21,9 +21,9 @@ export function MealDetails({ meal, actionButton }: MealDetailsProps) {
                             {meal.ingredients.map((ingredient, i) => (
                                 <li
                                     key={i}
-                                    className="flex items-start gap-2 text-sm leading-relaxed"
+                                    className="flex items-baseline gap-2.5 text-sm leading-relaxed"
                                 >
-                                    <span className="text-primary mt-1.5 text-xs">●</span>
+                                    <span className="text-primary">●</span>
                                     <span>{ingredient}</span>
                                 </li>
                             ))}
@@ -38,12 +38,12 @@ export function MealDetails({ meal, actionButton }: MealDetailsProps) {
                         {meal.instructions.map((step, i) => (
                             <li
                                 key={i}
-                                className="flex items-start gap-3 text-sm leading-relaxed"
+                                className="flex items-baseline gap-3 text-sm leading-relaxed"
                             >
-                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-medium flex items-center justify-center">
+                                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 text-primary text-xs font-medium flex items-center justify-center translate-y-0.5">
                                     {i + 1}
                                 </span>
-                                <span className="pt-0.5">{step}</span>
+                                <span>{step}</span>
                             </li>
                         ))}
                     </ol>
