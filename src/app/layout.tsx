@@ -27,7 +27,9 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontMono.variable} antialiased`}
       >
-        {children}
+        <div className="pb-20 md:pb-0 md:pt-14">
+          {children}
+        </div>
       </body>
     </html>
   );
