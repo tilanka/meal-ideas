@@ -44,7 +44,7 @@ export default function ShoppingList() {
                     <div className="space-y-8">
                         {savedMeals.map((meal) => (
                             <div key={meal.title} className="bg-card/50 rounded-xl p-5 backdrop-blur-sm">
-                                <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
+                                <h3 className="text-base md:text-lg font-semibold mb-4">
                                     {meal.title}
                                 </h3>
                                 <ul className="space-y-2">
@@ -54,14 +54,14 @@ export default function ShoppingList() {
                                             <li
                                                 key={index}
                                                 className={`flex items-center gap-3 rounded-lg p-2 cursor-pointer transition-all duration-200 ${isChecked
-                                                        ? "text-muted-foreground"
-                                                        : "hover:bg-muted/50"
+                                                    ? "text-muted-foreground"
+                                                    : "hover:bg-muted/50"
                                                     }`}
                                                 onClick={() => toggleItem(item)}
                                             >
                                                 <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all duration-200 ${isChecked
-                                                        ? "bg-primary border-primary"
-                                                        : "border-muted-foreground/30"
+                                                    ? "bg-primary border-primary"
+                                                    : "border-muted-foreground/30"
                                                     }`}>
                                                     {isChecked && (
                                                         <Check className="h-3 w-3 text-primary-foreground" />
