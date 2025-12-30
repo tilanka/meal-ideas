@@ -67,7 +67,7 @@ function SearchContent() {
                         id="meal-input"
                         name="input"
                         type="text"
-                        placeholder="e.g. chicken, pasta, quick lunch..."
+                        placeholder="e.g. spicy chicken, pasta, a salad..."
                         defaultValue={searchParams.get("q")?.toString()}
                         className="p-4 bg-muted/50 border-0 rounded-xl text-base placeholder:text-muted-foreground/50 focus:ring-2 focus:ring-primary/20 focus:bg-muted/70 transition-all duration-200"
                     />
@@ -108,8 +108,8 @@ function SearchContent() {
                                             <button
                                                 onClick={() => toggleMeal(idea)}
                                                 className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 ${isSaved(idea)
-                                                        ? "bg-primary/10 text-primary hover:bg-primary/20"
-                                                        : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+                                                    ? "bg-primary/10 text-primary hover:bg-primary/20"
+                                                    : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                                                     }`}
                                             >
                                                 <Bookmark

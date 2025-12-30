@@ -17,15 +17,9 @@ export function MealDetails({ meal, actionButton }: MealDetailsProps) {
                         <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
                             Ingredients
                         </h4>
-                        <ul className="space-y-2">
+                        <ul className="list-disc list-inside space-y-1.5 text-sm leading-relaxed">
                             {meal.ingredients.map((ingredient, i) => (
-                                <li
-                                    key={i}
-                                    className="flex items-baseline gap-2.5 text-sm leading-relaxed"
-                                >
-                                    <span className="text-primary">●</span>
-                                    <span>{ingredient}</span>
-                                </li>
+                                <li key={i}>{ingredient}</li>
                             ))}
                         </ul>
                     </div>
@@ -34,17 +28,9 @@ export function MealDetails({ meal, actionButton }: MealDetailsProps) {
                     <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
                         Instructions
                     </h4>
-                    <ol className="space-y-3">
+                    <ol className="list-decimal list-inside space-y-2 text-sm leading-relaxed">
                         {meal.instructions.map((step, i) => (
-                            <li
-                                key={i}
-                                className="flex items-baseline gap-3 text-sm leading-relaxed"
-                            >
-                                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 text-primary text-xs font-medium flex items-center justify-center translate-y-0.5">
-                                    {i + 1}
-                                </span>
-                                <span>{step}</span>
-                            </li>
+                            <li key={i}>{step}</li>
                         ))}
                     </ol>
                 </div>
