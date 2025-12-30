@@ -67,8 +67,9 @@ function SearchContent() {
                         id="meal-input"
                         name="input"
                         type="text"
+                        placeholder="e.g. chicken, pasta, quick lunch..."
                         defaultValue={searchParams.get("q")?.toString()}
-                        className="p-3 border border-gray-700 rounded-sm focus:ring-2 focus:border-transparent transition"
+                        className="p-4 bg-muted/50 border-0 rounded-xl text-base placeholder:text-muted-foreground/50 focus:ring-2 focus:ring-primary/20 focus:bg-muted/70 transition-all duration-200"
                     />
                     <Button size="lg" type="submit" disabled={isPending}>
                         {isPending ? (
@@ -85,7 +86,7 @@ function SearchContent() {
             </form>
 
             {error && (
-                <div className="mt-4 max-w-lg mx-auto text-red-500 bg-red-500/10 p-4 rounded-md">
+                <div className="mt-6 max-w-lg mx-auto text-red-400 bg-red-500/10 p-4 rounded-xl border border-red-500/20">
                     {error}
                 </div>
             )}
@@ -106,16 +107,16 @@ function SearchContent() {
                                         actionButton={
                                             <button
                                                 onClick={() => toggleMeal(idea)}
-                                                className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${isSaved(idea)
-                                                    ? "bg-green-500/10 text-green-500 hover:bg-green-500/20"
-                                                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                                                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 ${isSaved(idea)
+                                                        ? "bg-primary/10 text-primary hover:bg-primary/20"
+                                                        : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                                                     }`}
                                             >
                                                 <Bookmark
-                                                    className="h-5 w-5"
+                                                    className="h-4 w-4"
                                                     fill={isSaved(idea) ? "currentColor" : "none"}
                                                 />
-                                                <span className="sr-only">{isSaved(idea) ? "Saved" : "Bookmark"}</span>
+                                                <span className="text-sm">{isSaved(idea) ? "Saved" : "Save"}</span>
                                             </button>
                                         }
                                     />
