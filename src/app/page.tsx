@@ -14,6 +14,7 @@ function SearchContent() {
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const [hasSearched, setHasSearched] = useState(false);
 
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -22,6 +23,8 @@ function SearchContent() {
     useEffect(() => {
         const query = searchParams.get("q");
         if (query !== null) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setHasSearched(true);
             // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsPending(true);
             setError(null);
@@ -77,6 +80,7 @@ function SearchContent() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setHasSearched(true);
         const formData = new FormData(e.currentTarget);
         const input = formData.get("input") as string;
         // Allow empty input to pass through
@@ -85,11 +89,19 @@ function SearchContent() {
         router.push(`${pathname}?${params.toString()}`);
     };
 
+    // Determine if we should show centered or top-aligned layout
+    const showCentered = !hasSearched && suggestions.length === 0;
+
     return (
-        <>
-            <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
+        <div className={`flex flex-col transition-all duration-500 ease-out ${showCentered
+                ? "min-h-[calc(100vh-10rem)] justify-center"
+                : "min-h-0 justify-start"
+            }`}>
+            <form onSubmit={handleSubmit} className={`max-w-lg w-full mx-auto transition-all duration-500 ease-out ${showCentered ? "scale-100" : "scale-100"
+                }`}>
                 <div className="flex flex-col gap-4">
-                    <label htmlFor="meal-input" className="text-lg font-medium">
+                    <label htmlFor="meal-input" className={`font-medium transition-all duration-500 ${showCentered ? "text-2xl text-center" : "text-lg"
+                        }`}>
                         What do you want to eat?
                     </label>
                     <input
@@ -119,13 +131,13 @@ function SearchContent() {
             </form>
 
             {error && (
-                <div className="mt-4 text-red-500 bg-red-500/10 p-4 rounded-md">
+                <div className="mt-4 max-w-lg mx-auto text-red-500 bg-red-500/10 p-4 rounded-md">
                     {error}
                 </div>
             )}
 
             {suggestions.length > 0 && (
-                <div className="mt-4">
+                <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4">
                         {suggestions.map((idea, index) => (
                             <AccordionContainer key={index}>
@@ -186,7 +198,7 @@ function SearchContent() {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 }
 
