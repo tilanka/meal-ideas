@@ -17,7 +17,7 @@ export interface MealIdea {
 
 export async function searchMeals(input: string, excludeMeals: string[] = []): Promise<MealIdea[]> {
   console.log("Generating meal ideas for input:", input);
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   let promptText = input;
   if (!input || input.trim() === "") {
