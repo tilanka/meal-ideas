@@ -15,7 +15,7 @@ export interface MealIdea {
   totalCalories?: string;
 }
 
-export async function searchMeals(input: string): Promise<MealIdea[]> {
+export async function searchMeals(input: string, excludeMeals: string[] = []): Promise<MealIdea[]> {
   console.log("Generating meal ideas for input:", input);
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
@@ -24,8 +24,13 @@ export async function searchMeals(input: string): Promise<MealIdea[]> {
     promptText = "popular high-protein meal ideas";
   }
 
+  const excludeClause = excludeMeals.length > 0
+    ? `Do NOT include any of these meals: ${excludeMeals.join(", ")}.`
+    : "";
+
   const prompt = `
     Give me five ${promptText}.
+    ${excludeClause}
     Ensure all units are metric and the ingredients and terminology are localised to Australia.
     Return the ideas as a JSON array, where each object has the following structure:
     {

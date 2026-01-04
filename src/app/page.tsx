@@ -9,11 +9,12 @@ import { AccordionHeader } from "@/components/AccordionHeader";
 import { AccordionContainer } from "@/components/AccordionContainer";
 import { MealDetails } from "@/components/MealDetails";
 import { useSavedMeals } from "@/hooks/useSavedMeals";
-import { Bookmark } from "lucide-react";
+import { Bookmark, RefreshCw } from "lucide-react";
 
 function SearchContent() {
     const [suggestions, setSuggestions] = useState<MealIdea[]>([]);
     const [isPending, setIsPending] = useState(false);
+    const [isRefreshing, setIsRefreshing] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [openIndex, setOpenIndex] = useState<number | null>(null);
     const [hasSearched, setHasSearched] = useState(false);
@@ -50,6 +51,22 @@ function SearchContent() {
         const params = new URLSearchParams(searchParams);
         params.set("q", input);
         router.push(`${pathname}?${params.toString()}`);
+    };
+
+    const handleRefresh = async () => {
+        const query = searchParams.get("q") || "";
+        const excludeMeals = suggestions.map((meal) => meal.title);
+        setIsRefreshing(true);
+        setError(null);
+        setOpenIndex(null);
+        try {
+            const results = await searchMeals(query, excludeMeals);
+            setSuggestions(results);
+        } catch {
+            setError("The service is currently unavailable. Please try again later.");
+        } finally {
+            setIsRefreshing(false);
+        }
     };
 
     const showCentered = !hasSearched && suggestions.length === 0;
@@ -123,6 +140,17 @@ function SearchContent() {
                                 )}
                             </AccordionContainer>
                         ))}
+                    </div>
+                    <div className="flex justify-center mt-6">
+                        <Button
+                            variant="outline"
+                            onClick={handleRefresh}
+                            disabled={isRefreshing || isPending}
+                            className="gap-2"
+                        >
+                            <RefreshCw className={`h-4 w-4 ${isRefreshing ? "animate-spin" : ""}`} />
+                            {isRefreshing ? "Refreshing..." : "Refresh"}
+                        </Button>
                     </div>
                 </div>
             )}
